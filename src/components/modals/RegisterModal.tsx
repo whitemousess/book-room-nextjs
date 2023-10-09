@@ -12,7 +12,7 @@ import {
   useForm
 } from "react-hook-form";
 
-import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useRegisterModal from "@/src/hooks/useRegisterModal";
 
 import Modal from "./Modal";
 import Input from "../inputs/Input";
