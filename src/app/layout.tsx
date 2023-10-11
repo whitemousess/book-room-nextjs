@@ -1,20 +1,17 @@
+import './globals.css'
 import { Nunito } from 'next/font/google'
 
 import Navbar from '@/src/components/navbar/Navbar';
-import RegisterModal from '@/src/components/modals/RegisterModal';
-
 import ToasterProvider from '@/src/providers/ToasterProvider';
-
-import './globals.css'
 import ClientOnly from '@/src/components/ClientOnly';
 
 export const metadata = {
-  title: 'Airbnb',
+  title: 'Book-room',
   description: 'Airbnb Clone',
 }
 
-const font = Nunito({ 
-  subsets: ['latin'], 
+const font = Nunito({
+  subsets: ['latin'],
 });
 
 export default async function RootLayout({
@@ -28,7 +25,6 @@ export default async function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
-          <RegisterModal />
           <Navbar />
         </ClientOnly>
         <div className="pb-20 pt-28">

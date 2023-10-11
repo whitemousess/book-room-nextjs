@@ -2,17 +2,17 @@
 
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useRouter } from "next/navigation";
 
 import useRegisterModal from "@/src/hooks/useRegisterModal";
+import useLoginModal from "@/src/hooks/useLoginModal";
 
 import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
 
 const UserMenu = () => {
-  const router = useRouter();
 
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -80,16 +80,16 @@ const UserMenu = () => {
         >
           <div className="flex flex-col cursor-pointer">
             
-              <>
+              <div className="select-none">
                 <MenuItem 
                   label="Login" 
-                  onClick={() => {}}
+                  onClick={loginModal.onOpen}
                 />
                 <MenuItem 
                   label="Sign up" 
                   onClick={registerModal.onOpen}
                 />
-              </>
+              </div>
           </div>
         </div>
       )}

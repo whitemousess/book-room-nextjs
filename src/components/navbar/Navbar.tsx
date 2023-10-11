@@ -1,4 +1,6 @@
 import Container from "../Container";
+import LoginModal from "../modals/LoginModal";
+import RegisterModal from "../modals/RegisterModal";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
@@ -26,6 +28,9 @@ const Navbar= () => {
           <Logo />
           <Search />
           <UserMenu />
+          
+          <RegisterModal />
+          <LoginModal />
         </div>
       </Container>
     </div>

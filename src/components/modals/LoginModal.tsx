@@ -12,15 +12,15 @@ import {
   useForm
 } from "react-hook-form";
 
-import useRegisterModal from "@/src/hooks/useRegisterModal";
+import useLoginModal from "@/src/hooks/useLoginModal";
 
 import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
 import Button from "../Button";
 
-const RegisterModal= () => {
-  const registerModal = useRegisterModal();
+const LoginModal= () => {
+  const LoginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const { 
@@ -37,39 +37,16 @@ const RegisterModal= () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
-
-    axios.post('/api/register', data)
-    .then(() => {
-      toast.success('Registered!');
-      registerModal.onClose();
-    })
-    .catch((error) => {
-      toast.error("Register failed");
-    })
-    .finally(() => {
-      setIsLoading(false);
-    })
-  }
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome to Airbnb"
-        subtitle="Create an account!"
+        title="Welcome to comeback"
+        subtitle="login!"
       />
       <Input
         id="email"
         label="Email"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <Input
-        id="name"
-        label="Name"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -110,14 +87,15 @@ const RegisterModal= () => {
           font-light
         "
       >
-        <p>Already have an account?
+        <p>I do not have account 
           <span  
             className="
               text-neutral-800
               cursor-pointer 
               hover:underline
+              ml-2
             "
-            > Log in</span>
+            >Register</span>
         </p>
       </div>
     </div>
@@ -126,15 +104,15 @@ const RegisterModal= () => {
   return (
     <Modal
       disabled={isLoading}
-      isOpen={registerModal.isOpen}
-      title="Register"
+      isOpen={LoginModal.isOpen}
+      title="Login"
       actionLabel="Continue"
-      onClose={registerModal.onClose}
-      onSubmit={handleSubmit(onSubmit)}
+      onClose={LoginModal.onClose}
+      onSubmit={() => {}}
       body={bodyContent}
       footer={footerContent}
     />
   );
 }
 
-export default RegisterModal;
+export default LoginModal;
