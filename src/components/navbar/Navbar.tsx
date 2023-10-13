@@ -1,10 +1,11 @@
 import Container from "../Container";
 import LoginModal from "../modals/LoginModal";
 import RegisterModal from "../modals/RegisterModal";
+import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
-import { SafeUser } from "@/app/types";
+import { SafeUser } from "@/src/types";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -40,6 +41,8 @@ const Navbar: React.FC<NavbarProps> = ({currentUser}) => {
           <LoginModal />
         </div>
       </Container>
+      
+      <Categories />
     </div>
   </div>
   );

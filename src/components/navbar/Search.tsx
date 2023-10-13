@@ -32,7 +32,7 @@ const Search = () => {
             px-6
           "
         >
-          Anywhere
+          Địa điểm bất kỳ
         </div>
         <div 
           className="
@@ -46,7 +46,7 @@ const Search = () => {
             text-center
           "
         >
-          Any week
+          Tuần bất kỳ
         </div>
         <div 
           className="
@@ -60,7 +60,7 @@ const Search = () => {
             gap-3
           "
         >
-          <div className="hidden sm:block">Add guest</div>
+          <div className="hidden sm:block">Thêm khách</div>
           <div 
             className="
               p-2 

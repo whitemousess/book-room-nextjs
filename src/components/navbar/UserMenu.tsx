@@ -6,9 +6,10 @@ import { AiOutlineMenu } from "react-icons/ai";
 
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
-import { SafeUser } from "@/app/types";
-import useRegisterModal from "@/app/hooks/useRegisterModal";
-import useLoginModal from "@/app/hooks/useLoginModal";
+import { SafeUser } from "@/src/types";
+import useRegisterModal from "@/src/hooks/useRegisterModal";
+import useLoginModal from "@/src/hooks/useLoginModal";
+import Image from "next/image";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -17,6 +18,7 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({
   currentUser
 }) => {
+  console.log(currentUser);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
@@ -43,7 +45,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             cursor-pointer
           "
         >
-          Airbnb your home
+          Thuê phòng qua Airbnd
         </div>
         <div
           onClick={toggleOpen}
@@ -65,7 +67,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar src="/images/placeholder.jpg" />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
@@ -88,37 +90,33 @@ const UserMenu: React.FC<UserMenuProps> = ({
             {currentUser ?
               <>
                 <MenuItem
-                  label="My trips"
+                  label="Chuyến đi của tôi"
                   onClick={() => { }}
                 />
                 <MenuItem
-                  label="My favorites"
+                  label="Mục yêu thích của tôi"
                   onClick={() => { }}
                 />
                 <MenuItem
-                  label="My reservations"
+                  label="Chỗ đã dặt"
                   onClick={() => { }}
                 />
                 <MenuItem
-                  label="My properties"
+                  label="Tài sản"
                   onClick={() => { }}
                 />
                 <MenuItem
-                  label="My home"
-                  onClick={() => { }}
-                />
-                <MenuItem
-                  label="Logout"
+                  label="Đăng xuất"
                   onClick={() => signOut()}
                 />
               </> :
               <>
                 <MenuItem
-                  label="Login"
+                  label="Đăng nhập"
                   onClick={loginModal.onOpen}
                 />
                 <MenuItem
-                  label="Sign up"
+                  label="Đăng ký"
                   onClick={registerModal.onOpen}
                 />
               </>

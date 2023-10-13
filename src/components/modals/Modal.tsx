@@ -100,9 +100,9 @@ const Modal: React.FC<ModalProps> = ({
           {/*content*/}
           <div className={`
             translate
-            duration-300
+            duration-500
             h-full
-            ${showModal ? 'translate-y-0' : 'translate-y-full'}
+            ${showModal ? 'translate-x-0' : 'translate-x-full'}
             ${showModal ? 'opacity-100' : 'opacity-0'}
           `}>
             <div className="
