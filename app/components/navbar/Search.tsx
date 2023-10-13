@@ -1,7 +1,5 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import { useMemo } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
 const Search = () => {
