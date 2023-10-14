@@ -4,7 +4,7 @@ import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
 import { 
   FieldValues, 
@@ -56,6 +56,11 @@ const RegisterModal= () => {
       setIsLoading(false);
     })
   }
+
+  const toggleModal = useCallback(() => {
+    loginModal.onOpen();
+    registerModal.onClose();
+  }, [loginModal, registerModal])
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -116,10 +121,7 @@ const RegisterModal= () => {
       >
         <p>Đã có tài khoản?
           <button 
-          onClick={() => {
-            registerModal.onClose();
-            loginModal.onOpen();
-          }}
+          onClick={toggleModal}
             className="
               text-neutral-800
               cursor-pointer 

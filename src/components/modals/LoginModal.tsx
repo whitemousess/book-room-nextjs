@@ -46,19 +46,24 @@ const LoginModal = () => {
       ...data,
       redirect: false,
     })
-    .then((callback => {
-      setIsLoading(false);
-      if(callback?.ok) {
-        toast.success("Đã đăng ký")
-        router.refresh();
-        LoginModal.onClose();
-      } 
+      .then((callback => {
+        setIsLoading(false);
+        if (callback?.ok) {
+          toast.success("Đã đăng ký")
+          router.refresh();
+          LoginModal.onClose();
+        }
 
-      if(callback?.error) {
-        toast.error(callback.error);
-      }
-    }))
+        if (callback?.error) {
+          toast.error(callback.error);
+        }
+      }))
   }
+
+  const toggleModal = useCallback(() => {
+    LoginModal.onClose();
+    registerModal.onOpen();
+  }, [LoginModal, registerModal])
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -111,10 +116,7 @@ const LoginModal = () => {
       >
         <p>Tôi chưa có tài khoản
           <button
-            onClick={() => {
-              registerModal.onOpen();
-              LoginModal.onClose();
-            }}
+            onClick={toggleModal}
             className="
               text-neutral-800
               cursor-pointer 

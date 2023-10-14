@@ -1,6 +1,7 @@
 import Container from "../Container";
 import LoginModal from "../modals/LoginModal";
 import RegisterModal from "../modals/RegisterModal";
+import RentModal from "../modals/RentModal";
 import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
@@ -12,9 +13,9 @@ interface NavbarProps {
 
 }
 
-const Navbar: React.FC<NavbarProps> = ({currentUser}) => {
+const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
 
-  return ( 
+  return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div
         className="
@@ -22,9 +23,9 @@ const Navbar: React.FC<NavbarProps> = ({currentUser}) => {
           border-b-[1px]
         "
       >
-      <Container>
-        <div 
-          className="
+        <Container>
+          <div
+            className="
             flex 
             flex-row 
             items-center 
@@ -32,19 +33,20 @@ const Navbar: React.FC<NavbarProps> = ({currentUser}) => {
             gap-3
             md:gap-0
           "
-        >
-          <Logo />
-          <Search />
-          <UserMenu currentUser={currentUser}/>
-          
-          <RegisterModal />
-          <LoginModal />
-        </div>
-      </Container>
-      
-      <Categories />
+          >
+            <Logo />
+            <Search />
+            <UserMenu currentUser={currentUser} />
+
+            <RegisterModal />
+            <LoginModal />
+            <RentModal />
+          </div>
+        </Container>
+
+        <Categories />
+      </div>
     </div>
-  </div>
   );
 }
 

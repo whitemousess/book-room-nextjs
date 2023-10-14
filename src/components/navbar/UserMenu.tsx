@@ -10,6 +10,7 @@ import { SafeUser } from "@/src/types";
 import useRegisterModal from "@/src/hooks/useRegisterModal";
 import useLoginModal from "@/src/hooks/useLoginModal";
 import Image from "next/image";
+import useRentModal from "@/src/hooks/useRentModal";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -18,9 +19,9 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({
   currentUser
 }) => {
-  console.log(currentUser);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,10 +29,21 @@ const UserMenu: React.FC<UserMenuProps> = ({
     setIsOpen((value) => !value);
   }, []);
 
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      loginModal.onOpen();
+    }
+    else {
+      rentModal.onOpen();
+    }
+  }, [currentUser, loginModal, rentModal])
+
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
+          onClick={onRent}
           className="
             hidden
             md:block
@@ -101,6 +113,9 @@ const UserMenu: React.FC<UserMenuProps> = ({
                   label="Chỗ đã dặt"
                   onClick={() => { }}
                 />
+                <MenuItem
+                  label="Đặt chỗ"
+                  onClick={rentModal.onOpen} />
                 <MenuItem
                   label="Tài sản"
                   onClick={() => { }}

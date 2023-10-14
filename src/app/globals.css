@@ -10,10 +10,18 @@ body,
 
 /* Tùy chỉnh thanh cuộn ngang */
 ::-webkit-scrollbar {
-  height:10px;
+  height: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 4px;
+}
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top{
+  z-index: 0 !important;
 }
