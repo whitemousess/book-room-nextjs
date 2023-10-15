@@ -114,7 +114,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                   onClick={() => { }}
                 />
                 <MenuItem
-                  label="Đặt chỗ"
+                  label="Thêm phòng"
                   onClick={rentModal.onOpen} />
                 <MenuItem
                   label="Tài sản"

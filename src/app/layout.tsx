@@ -1,9 +1,9 @@
 import { Nunito } from 'next/font/google'
 
 import './globals.css'
-import Navbar from '@/src/components/navbar/Navbar';
-import ToasterProvider from '@/src/providers/ToasterProvider';
-import ClientOnly from '@/src/components/ClientOnly';
+import Navbar from '~/components/navbar/Navbar';
+import ToasterProvider from '~/providers/ToasterProvider';
+import ClientOnly from '~/components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
