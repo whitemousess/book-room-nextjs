@@ -1,20 +1,19 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Reservation } from "@prisma/client";
-import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
-
-import { categories } from "@/src/components/navbar/Categories";
-import { SafeListings, SafeUser } from "@/src/types";
-import Container from "@/src/components/Container";
-import ListingHead from "@/src/components/listings/ListingHead";
-import ListingInfo from "@/src/components/listings/ListingInfo";
-import useLoginModal from "@/src/hooks/useLoginModal";
 import axios from "axios";
 import toast from "react-hot-toast";
-import ListingReservation from "@/src/components/listings/ListingReservation";
 import { Range } from "react-date-range";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
+
+import { categories } from "~/components/navbar/Categories";
+import { SafeListing, SafeReservation, SafeUser } from "~/types";
+import Container from "~/components/Container";
+import ListingHead from "~/components/listings/ListingHead";
+import ListingInfo from "~/components/listings/ListingInfo";
+import useLoginModal from "~/hooks/useLoginModal";
+import ListingReservation from "~/components/listings/ListingReservation";
 
 const initialDateRange = {
     startDate: new Date(),
@@ -23,8 +22,8 @@ const initialDateRange = {
 }
 
 interface ListingClientProps {
-    reservations?: Reservation[];
-    listing: SafeListings & {
+    reservations?: SafeReservation[];
+    listing: SafeListing & {
         user: SafeUser
     };
     currentUser?: SafeUser | null;
@@ -48,7 +47,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
         setIsLoading(true);
 
-        axios.post('/api/reservation', {
+        axios.post('/api/reservations', {
             totalPrice,
             startDate: dateRange.startDate,
             endDate: dateRange.endDate,
@@ -57,7 +56,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             .then(() => {
                 toast.success("Listing reserved!")
                 setDateRange(initialDateRange);
-                router.refresh()
+                router.push('/trips')
             })
             .catch((error) => console.log(error))
             .finally(() => setIsLoading(false));

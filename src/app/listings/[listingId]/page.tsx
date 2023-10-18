@@ -1,8 +1,9 @@
-import EmptyState from "@/src/components/EmptyState";
-import ClientOnly from "@/src/components/ClientOnly";
-import getListingById from "@/src/app/actions/GetListingById";
-import getCurrentUser from "@/src/app/actions/getCurrentUser";
+import EmptyState from "~/components/EmptyState";
+import ClientOnly from "~/components/ClientOnly";
+import getListingById from "~/app/actions/GetListingById";
+import getCurrentUser from "~/app/actions/getCurrentUser";
 import ListingClient from "./ListingClient"
+import getReservations from "~/app/actions/getReservations";
 
 interface IParams {
     listingId?: string;
@@ -10,6 +11,7 @@ interface IParams {
 
 const ListingPage = async ({ params }: { params: IParams }) => {
     const listing = await getListingById(params);
+    const reservation = await getReservations(params);
     const currentUser = await getCurrentUser();
 
     if (!listing) {
@@ -24,6 +26,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
         <ClientOnly>
             <ListingClient
                 listing={listing}
+                reservations={reservation}
                 currentUser={currentUser}
             />
         </ClientOnly>

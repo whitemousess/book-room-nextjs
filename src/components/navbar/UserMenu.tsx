@@ -3,13 +3,13 @@
 import { signOut } from "next-auth/react";
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import { SafeUser } from "@/src/types";
 import useRegisterModal from "@/src/hooks/useRegisterModal";
 import useLoginModal from "@/src/hooks/useLoginModal";
-import Image from "next/image";
 import useRentModal from "@/src/hooks/useRentModal";
 
 interface UserMenuProps {
@@ -22,6 +22,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
+  const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -103,7 +104,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
               <>
                 <MenuItem
                   label="Chuyến đi của tôi"
-                  onClick={() => { }}
+                  onClick={() => router.push('/trips')}
                 />
                 <MenuItem
                   label="Mục yêu thích của tôi"
