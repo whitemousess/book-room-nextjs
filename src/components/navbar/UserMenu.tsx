@@ -99,7 +99,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             text-sm
           "
         >
-          <div className="flex flex-col cursor-pointer">
+          <div className="flex flex-col cursor-pointer mt-5">
             {currentUser ?
               <>
                 <MenuItem
@@ -108,18 +108,18 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 />
                 <MenuItem
                   label="Mục yêu thích của tôi"
-                  onClick={() => { }}
+                  onClick={() => router.push('/favorites')}
                 />
                 <MenuItem
-                  label="Chỗ đã dặt"
-                  onClick={() => { }}
+                  label="Phòng đã đặt"
+                  onClick={() => router.push('/reservations')}
                 />
                 <MenuItem
                   label="Thêm phòng"
                   onClick={rentModal.onOpen} />
                 <MenuItem
                   label="Tài sản"
-                  onClick={() => { }}
+                  onClick={() => router.push('/properties')}
                 />
                 <MenuItem
                   label="Đăng xuất"

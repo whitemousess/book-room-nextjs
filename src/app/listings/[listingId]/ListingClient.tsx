@@ -57,10 +57,18 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 toast.success("Listing reserved!")
                 setDateRange(initialDateRange);
                 router.push('/trips')
+                router.refresh();
             })
             .catch((error) => console.log(error))
             .finally(() => setIsLoading(false));
-    }, [totalPrice, dateRange, loginModal, currentUser, router, listing?.id])
+    }, [
+        totalPrice,
+        dateRange,
+        loginModal,
+        currentUser,
+        router,
+        listing?.id
+    ])
 
     useEffect(() => {
         if (dateRange.startDate && dateRange.endDate) {

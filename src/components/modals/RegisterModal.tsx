@@ -6,8 +6,8 @@ import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
-import { 
-  FieldValues, 
+import {
+  FieldValues,
   SubmitHandler,
   useForm
 } from "react-hook-form";
@@ -20,14 +20,14 @@ import Button from "../Button";
 import useLoginModal from "@/src/hooks/useLoginModal";
 import useRegisterModal from "@/src/hooks/useRegisterModal";
 
-const RegisterModal= () => {
+const RegisterModal = () => {
   const loginModal = useLoginModal();
   const router = useRouter();
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { 
-    register, 
+  const {
+    register,
     handleSubmit,
     formState: {
       errors,
@@ -44,17 +44,18 @@ const RegisterModal= () => {
     setIsLoading(true);
 
     axios.post('/api/register', data)
-    .then(() => {
-      toast.success('Đã đăng nhập!');
-      registerModal.onClose();
-      router.refresh();
-    })
-    .catch((error) => {
-      toast.error("Thông tin không hợp lệ");
-    })
-    .finally(() => {
-      setIsLoading(false);
-    })
+      .then(() => {
+        toast.success('Đã đăng ký!');
+        loginModal.onOpen();
+        registerModal.onClose();
+        router.refresh();
+      })
+      .catch((error) => {
+        toast.error("Thông tin không hợp lệ");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   const toggleModal = useCallback(() => {
@@ -99,19 +100,19 @@ const RegisterModal= () => {
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
-      <Button 
-        outline 
+      <Button
+        outline
         label="Đăng ký với Google"
         icon={FcGoogle}
-        onClick={() => signIn('google')} 
+        onClick={() => signIn('google')}
       />
-      <Button 
-        outline 
+      <Button
+        outline
         label="Đăng ký với Github"
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
-      <div 
+      <div
         className="
           text-neutral-500 
           text-center 
@@ -120,15 +121,15 @@ const RegisterModal= () => {
         "
       >
         <p>Đã có tài khoản?
-          <button 
-          onClick={toggleModal}
+          <button
+            onClick={toggleModal}
             className="
               text-neutral-800
               cursor-pointer 
               hover:underline
               ml-2
             "
-            >Đăng nhập</button>
+          >Đăng nhập</button>
         </p>
       </div>
     </div>
