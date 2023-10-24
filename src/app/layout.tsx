@@ -5,6 +5,7 @@ import Navbar from '~/components/navbar/Navbar';
 import ToasterProvider from '~/providers/ToasterProvider';
 import ClientOnly from '~/components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
+import Loading from './loading';
 
 export const metadata = {
   title: 'Book-room',

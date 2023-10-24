@@ -1,12 +1,13 @@
-import Container from "../Container";
-import LoginModal from "../modals/LoginModal";
-import RegisterModal from "../modals/RegisterModal";
-import RentModal from "../modals/RentModal";
+import { SafeUser } from "@/src/types";
+import Container from "~/components/Container";
+import LoginModal from "~/components/modals/LoginModal";
+import RegisterModal from "~/components/modals/RegisterModal";
+import RentModal from "~/components/modals/RentModal";
+import SearchModal from "~/components/modals/SearchModal";
 import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
-import { SafeUser } from "@/src/types";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -40,6 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
 
             <RegisterModal />
             <LoginModal />
+            <SearchModal />
             <RentModal />
           </div>
         </Container>
